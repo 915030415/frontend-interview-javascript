@@ -58,7 +58,7 @@ class Computer {
 
 
 
-上面的代码非常的简单，我们定义了一个名为 Computer 的类，该类存在 *name、price* 这两个实例属性，一个 *showSth* 的原型方法以及一个 *comStruct* 的静态方法。
+上面的代码非常的简单，我们定义了一个名为 *Computer* 的类，该类存在 *name、price* 这两个实例属性，一个 *showSth* 的原型方法以及一个 *comStruct* 的静态方法。
 
 
 
@@ -518,52 +518,52 @@ e.init();
 > ```js
 > "use strict";
 > 
-> function _classCallCheck(instance, Constructor) { 
->     if (!(instance instanceof Constructor)) { 
->       throw new TypeError("Cannot call a class as a function"); 
->     } 
+> function _classCallCheck(instance, Constructor) {
+>        if (!(instance instanceof Constructor)) {
+>            throw new TypeError("Cannot call a class as a function");
+>        }
 > }
 > 
-> function _defineProperties(target, props) { 
->     for (var i = 0; i < props.length; i++) { 
->       var descriptor = props[i]; 
->       descriptor.enumerable = descriptor.enumerable || false; 
->       descriptor.configurable = true; 
->       if ("value" in descriptor) 
->         descriptor.writable = true; 
->       Object.defineProperty(target, descriptor.key, descriptor); 
->     } 
+> function _defineProperties(target, props) {
+>        for (var i = 0; i < props.length; i++) {
+>            var descriptor = props[i];
+>            descriptor.enumerable = descriptor.enumerable || false;
+>            descriptor.configurable = true;
+>            if ("value" in descriptor)
+>                descriptor.writable = true;
+>            Object.defineProperty(target, descriptor.key, descriptor);
+>        }
 > }
 > 
-> function _createClass(Constructor, protoProps, staticProps) { 
->     if (protoProps) 
->       _defineProperties(Constructor.prototype, protoProps); 
->     if (staticProps) 
->       _defineProperties(Constructor, staticProps); 
->     return Constructor; 
+> function _createClass(Constructor, protoProps, staticProps) {
+>        if (protoProps)
+>            _defineProperties(Constructor.prototype, protoProps);
+>        if (staticProps)
+>            _defineProperties(Constructor, staticProps);
+>        return Constructor;
 > }
 > 
 > var Example = /*#__PURE__*/function () {
->   function Example(name) {
->     _classCallCheck(this, Example);
+>       function Example(name) {
+>            _classCallCheck(this, Example);
 > 
->     this.name = name;
->   }
+>            this.name = name;
+>       }
 > 
->   _createClass(Example, [{
->     key: "init",
->     value: function init() {
->       var _this = this;
+>       _createClass(Example, [{
+>            key: "init",
+>            value: function init() {
+>                var _this = this;
 > 
->       var fun = function fun() {
->         console.log(_this.name);
->       };
+>                var fun = function fun() {
+>                    console.log(_this.name);
+>                };
 > 
->       fun();
->     }
->   }]);
+>                fun();
+>            }
+>       }]);
 > 
->   return Example;
+>       return Example;
 > }();
 > 
 > var e = new Example('Hello');
