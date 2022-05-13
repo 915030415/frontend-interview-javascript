@@ -81,7 +81,7 @@ e.init();
 >       return Object.keys(result); // 获取对象所有属性名的数组
 > }
 > 
-> // 任意数组去重，适配范围光，效率低
+> // 任意数组去重，适配范围广，效率低
 > function unique(arr) {
 >       var result = []; // 结果数组
 >       for (var i = 0; i < arr.length; i++) {
