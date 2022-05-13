@@ -707,13 +707,13 @@ export class ButtonWrapper {
 >
 > 在 *JavaScript* 中，数据类型整体上来讲可以分为两大类：**基本类型**和**引用数据类型**
 >
-> 基本数据类型，一共有 *6* 种：
+> 基本数据类型，一共有 *8* 种：
 >
 > ```text
-> string，symbol，number，boolean，undefined，null
+> string，symbol，number，boolean，undefined，null，bigInt
 > ```
 >
-> 其中 *symbol* 类型是在 *ES6* 里面新添加的基本数据类型。
+> 其中 *symbol*、*bigInt* 类型是在 *ES6* 及后续版本里面新添加的基本数据类型。
 >
 > 引用数据类型，就只有 *1* 种：
 >
@@ -1658,11 +1658,9 @@ try {
 
 >参考答案：
 >
->*JavaScript* 中的基础数据类型，一共有 *6* 种：
+>*JavaScript* 中的基础数据类型，一共有 *7* 种：
 >
->*string，symbol，number，boolean，undefined，null*
->
->其中 *symbol* 类型是在 *ES6* 里面新添加的基本数据类型。
+>*string，symbol，number，boolean，undefined，null*，*bigInt*
 
 
 
@@ -3543,10 +3541,10 @@ console.log(child.hasOwnProperty('sayName'))//false
 >
 > 在 *JavaScript* 中，数据类型整体上来讲可以分为两大类：**基本类型**和**引用数据类型**
 >
-> 基本数据类型，一共有 *6* 种：
+> 基本数据类型，一共有 *7* 种：
 >
 > ```text
-> string，symbol，number，boolean，undefined，null
+> string，symbol，number，boolean，undefined，null，bigInt
 > ```
 >
 > 其中 *symbol* 类型是在 *ES6* 里面新添加的基本数据类型。
