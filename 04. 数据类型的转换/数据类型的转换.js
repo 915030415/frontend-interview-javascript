@@ -137,13 +137,29 @@
 // 右边不是字符串，那么就需要调用 String() 转为字符串，所以 {} 就转为了 [object Object]
 // 最后两个字符串拼接起来
 
-console.log('5' * []);
+// console.log('5' * []); // 0
 
-// 这里在进行乘法运行，所以两边要转为 number 类型
+// 首先这里是进行乘法操作，所以两边就都要转换为 number 类型
 
-// 左边：Number('5') ---> 5
-// 右边：因为 [] 的 valueOf 已经得到 0 了，所以最后转换出来就是 0
-console.log([].valueOf()); // 0
-console.log([].toString()); // []
+// 左边：Number('5') ----> 5
+// 右边：[] 最终转换为了 0
+// console.log([].valueOf()) // []
+// [] 的 valueOf 拿到的仍然是 []，仍然是一个对象，接下来就要进行第二步
+// 调用 toString 方法
+// console.log([].toString()); // [] 得到的是一个空字符串
+// 空字符串是原始值，因此可以使用 Number 转为数字
+// console.log(Number('')); // 0
+// 因此最终 [] 转换出来就为 0
 
-console.log(+true);
+// console.log('5' * [2]) // 10
+// 右边：[2].valueOf()
+// console.log([2].valueOf()); // [2]
+// console.log([2].toString()); // 字符串的 2
+// 最后 Number("2") 就变成了 2
+
+// console.log("5" * [1,2]) // NaN
+// console.log([1,2].valueOf()); // [ 1, 2 ] 仍然是数组
+// console.log([1,2].toString()); // "1,2"
+// console.log(Number("1,2")) // NaN
+
+console.log(+'abc');
