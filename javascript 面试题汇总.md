@@ -5561,59 +5561,79 @@ console.log('script end');
 > 具体的实现如下：
 >
 > ```js
-> function fun(total, n) {
->     //先对整个数组进行排序
->     total.sort((a, b) => a - b);
+> const testArr = [11, 42, 23, 4, 5, 6, 4, 5, 6, 11, 23, 42, 56, 78, 90];
+> function avarageSum(n, arr) {
+>  //    找到平均值
+>  const sum = arr.reduce((a, b) => a + b, 0)
+>  const ava = Math.round(sum / n);
+>  // 生成一个长度为n的二维数组
+>  let target = new Array(n).fill(0).map(()=>[])
+>  // const target = [[], [], []];
+>  let cursor;
+>  let max = 0;
+>  let maxIdx = 0;
+>  // 所有数组需要尽量加到ava
+>  while (arr.length > 0) {
+>      // 得到当前arr数组最大的数
+>      // 出数器
+>      // 出数器负责拿出当前数组中最大的那个数
+>      for (let i = 0; i < arr.length; i++) {
+>          if (arr[i] > max) {
+>              max = arr[i];
+>              maxIdx = i
+>          }
+>      }
+>      // arr数组中删除最大数
+>      const temparr = arr.splice(maxIdx, 1);
 > 
->     //求和
->     var sum = 0;
->     for (var i = 0; i < total.length; i++) {
->         sum += total[i];
->     }
+>      // 计算差距的函数 找到差距(距离平均值)最大的那一组 返回下标
+>      cursor = getMaxDis(target, ava);
 > 
->     var avg = Math.ceil(sum / n);
+>      // console.log("下标", cursor)
+>      // 加入
+>      target[cursor].push(temparr[0]);
+>      // 重置
+>      max = 0;
+>      maxIdx = 0;
+>  }
+>  return target.map(item=>{
+>      // 返回累加结果
+>      let sum = item.reduce((a,b)=>a+b,0);
+>      item.sum = sum
+>      return item
+>  })
 > 
->     //结果数组
->     var result = []; //长度为n
-> 
->     for (var i = 0; i < n; i++) {
->         result[i] = [total.pop()];
->         result[i].sum = result[i][0];
-> 
->         //组成一个分数组
->         while (result[i].sum < avg && total.length > 0) {
->             for (var j = 0; j < total.length; j++) {
->                 if (result[i].sum + total[j] >= avg) {
->                     result[i].push(total[j]);
->                     result[i].sum += total[j];
->                     break;
->                 }
->             }
-> 
->             if (j == total.length) {
->                 result[i].push(total.pop());
->                 result[i].sum += result[i][result[i].length - 1];
->             } else {
->                 //从数组中移除此元素
->                 total.splice(j, 1);
->             }
->         }
-> 
->         sum -= result[i].sum;
->         avg = Math.ceil(sum / (n - 1 - i));
-> 
->     }
->     return result;
 > }
+> function getMaxDis(origin, stand) {
+>  // 计算origin数组中和stand最大差距的那一组
+>  const len = origin.length;
+>  let i = 0;
+>  let maxDis;
+>  let maxDisIdx;
+>  while (i < len) {
+>      const sum = origin[i].reduce((a, b) => a + b, 0);
+>      const dis = stand - sum;
+>      if (i === 0) {
+>          maxDis = dis;
+>          maxDisIdx = 0
+>      }
+>      if (dis > maxDis) {
+>          maxDis = dis;
+>          maxDisIdx = i
+>      }
+>      i++;
+>  }
+>  return maxDisIdx
 > 
-> // 测试
-> var arr = [11, 42, 23, 4, 5, 6, 4, 5, 6, 11, 23, 42, 56, 78, 90];
-> console.log(fun(arr, 3));
-> // [
-> //     [ 90, 56, sum: 146 ],
-> //     [ 78, 42, 11, sum: 131 ],
-> //     [ 42, 23, 23, 11, 6, 6, 5, 5, 4, 4, sum: 129 ]
-> // ]
+> }
+> console.log(avarageSum(3, testArr))
+> /*
+>   [
+>       [ 90, 23, 11, 6, 5, sum: 135 ],
+>       [ 78, 42, 11, 4, sum: 135 ],
+>       [ 56, 42, 23, 6, 5, 4, sum: 136 ]
+>    ]
+>  */
 > ```
 
 
